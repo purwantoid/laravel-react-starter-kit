@@ -973,3 +973,21 @@
 [86] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9001 (through xdebug.client_host/xdebug.client_port).
 [86] Log closed at 2025-09-28 10:39:46.129182
 
+[85] Log opened at 2025-09-28 10:44:51.195133
+[85] [Step Debug] INFO: Connecting to configured address/port: host.docker.internal:9001.
+[85] [Step Debug] WARN: Creating socket for 'host.docker.internal:9001', poll success, but error: Operation now in progress (29).
+[85] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9001 (through xdebug.client_host/xdebug.client_port).
+[85] [Step Debug] INFO: Connecting to configured address/port: host.docker.internal:9001.
+[85] [Step Debug] WARN: Creating socket for 'host.docker.internal:9001', poll success, but error: Operation now in progress (29).
+[85] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9001 (through xdebug.client_host/xdebug.client_port).
+[85] Log closed at 2025-09-28 10:44:51.471338
+
+[86] Log opened at 2025-09-28 10:44:51.547712
+[86] [Step Debug] INFO: Connecting to configured address/port: host.docker.internal:9001.
+[86] [Step Debug] WARN: Creating socket for 'host.docker.internal:9001', poll success, but error: Operation now in progress (29).
+[86] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9001 (through xdebug.client_host/xdebug.client_port).
+[86] [Step Debug] INFO: Connecting to configured address/port: host.docker.internal:9001.
+[86] [Step Debug] WARN: Creating socket for 'host.docker.internal:9001', poll success, but error: Operation now in progress (29).
+[86] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9001 (through xdebug.client_host/xdebug.client_port).
+[86] Log closed at 2025-09-28 10:44:51.664496
+
