@@ -1,8 +1,20 @@
 export function Forbidden() {
     return (
         <div className="container flex h-screen w-full flex-col items-center justify-center gap-6 overflow-y-auto">
-            <svg width="125" height="87" focusable="false" fill="currentColor" stroke="currentColor" className="text-neutral-500">
-                <g fill="none" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10">
+            <svg
+                width="125"
+                height="87"
+                focusable="false"
+                fill="currentColor"
+                stroke="currentColor"
+                className="text-neutral-500"
+            >
+                <g
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                >
                     <path
                         d="M1.5 83.5a2.006 2.006 0 002 2h118a2.006 2.006 0 002-2v-80a2.006 2.006 0 00-2-2H3.5a2.006 2.006 0 00-2 2z"
                         strokeWidth="3"
@@ -16,10 +28,13 @@ export function Forbidden() {
             </svg>
 
             <div className="text-center">
-                <h3 className="mb-1 text-xl font-semibold">Error 403: Access not allowed</h3>
+                <h3 className="mb-1 text-xl font-semibold">
+                    Error 403: Access not allowed
+                </h3>
 
-                <p className="text-sm italic text-muted-foreground">
-                    You do not have permission to access this page. Try checking the URL
+                <p className="text-sm text-muted-foreground italic">
+                    You do not have permission to access this page. Try checking
+                    the URL
                     <br />
                     or visit a different page.
                 </p>

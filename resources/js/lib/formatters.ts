@@ -1,4 +1,4 @@
-import { dayjs, isValidDate, safeParseDate } from './date-util'
+import { dayjs, isValidDate, safeParseDate } from './date-util';
 
 let dateFormatter: Intl.DateTimeFormat;
 let dateTimeFormatter: Intl.DateTimeFormat;
@@ -63,7 +63,9 @@ export const nFormatter = (num: number, digits: number = 2) => {
             return num >= item.value;
         });
 
-    return item ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol : '0';
+    return item
+        ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol
+        : '0';
 };
 
 export function formatNumber(value: string | number) {

@@ -39,7 +39,9 @@ export const useSearch = () => {
     const searchContext = React.useContext(SearchContext);
 
     if (!searchContext) {
-        throw new Error('useSearch has to be used within <SearchContext.Provider>');
+        throw new Error(
+            'useSearch has to be used within <SearchContext.Provider>',
+        );
     }
 
     return searchContext;

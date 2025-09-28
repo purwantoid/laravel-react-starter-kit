@@ -1,10 +1,23 @@
-import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command';
+import {
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
+} from '@/components/ui/command';
 import { useSearch } from '@/context/search-context';
 import { useTheme } from '@/context/theme-context';
+import { sidebarData } from '@/layouts/data/sidebar-data';
 import { router } from '@inertiajs/react';
-import { IconArrowRightDashed, IconDeviceLaptop, IconMoon, IconSun } from '@tabler/icons-react';
+import {
+    IconArrowRightDashed,
+    IconDeviceLaptop,
+    IconMoon,
+    IconSun,
+} from '@tabler/icons-react';
 import React from 'react';
-import { sidebarData } from '@/layouts/data/sidebar-data'
 import { ScrollArea } from './ui/scroll-area';
 
 export function CommandMenu() {
@@ -16,7 +29,7 @@ export function CommandMenu() {
             setOpen(false);
             command();
         },
-        [setOpen]
+        [setOpen],
     );
 
     return (
@@ -34,7 +47,9 @@ export function CommandMenu() {
                                             key={`${navItem.url}-${i}`}
                                             value={navItem.title}
                                             onSelect={() => {
-                                                runCommand(() => router.visit(navItem.url));
+                                                runCommand(() =>
+                                                    router.visit(navItem.url),
+                                                );
                                             }}
                                         >
                                             <div className="mr-2 flex h-4 w-4 items-center justify-center">
@@ -49,7 +64,9 @@ export function CommandMenu() {
                                         key={`${subItem.url}-${i}`}
                                         value={subItem.title}
                                         onSelect={() => {
-                                            runCommand(() => router.visit(subItem.url));
+                                            runCommand(() =>
+                                                router.visit(subItem.url),
+                                            );
                                         }}
                                     >
                                         <div className="mr-2 flex h-4 w-4 items-center justify-center">
@@ -63,14 +80,22 @@ export function CommandMenu() {
                     ))}
                     <CommandSeparator />
                     <CommandGroup heading="Theme">
-                        <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
+                        <CommandItem
+                            onSelect={() => runCommand(() => setTheme('light'))}
+                        >
                             <IconSun /> <span>Light</span>
                         </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
+                        <CommandItem
+                            onSelect={() => runCommand(() => setTheme('dark'))}
+                        >
                             <IconMoon className="scale-90" />
                             <span>Dark</span>
                         </CommandItem>
-                        <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
+                        <CommandItem
+                            onSelect={() =>
+                                runCommand(() => setTheme('system'))
+                            }
+                        >
                             <IconDeviceLaptop />
                             <span>System</span>
                         </CommandItem>

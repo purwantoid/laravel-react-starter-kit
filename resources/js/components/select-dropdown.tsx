@@ -1,5 +1,11 @@
 import { FormControl } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { IconLoader } from '@tabler/icons-react';
 
@@ -15,16 +21,18 @@ interface SelectDropdownProps {
 }
 
 export function SelectDropdown({
-                                   defaultValue,
-                                   onValueChange,
-                                   isPending,
-                                   items,
-                                   placeholder,
-                                   disabled,
-                                   className = '',
-                                   isControlled = false,
-                               }: SelectDropdownProps) {
-    const defaultState = isControlled ? { value: defaultValue, onValueChange } : { defaultValue, onValueChange };
+    defaultValue,
+    onValueChange,
+    isPending,
+    items,
+    placeholder,
+    disabled,
+    className = '',
+    isControlled = false,
+}: SelectDropdownProps) {
+    const defaultState = isControlled
+        ? { value: defaultValue, onValueChange }
+        : { defaultValue, onValueChange };
     return (
         <Select {...defaultState}>
             <FormControl>

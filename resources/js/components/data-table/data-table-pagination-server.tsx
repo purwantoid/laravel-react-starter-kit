@@ -1,6 +1,17 @@
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import {
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    DoubleArrowLeftIcon,
+    DoubleArrowRightIcon,
+} from '@radix-ui/react-icons';
 
 interface DataTablePaginationProps {
     pageIndex: number;
@@ -63,16 +74,36 @@ export function DataTablePagination({
 
                 {/* Navigation */}
                 <div className="flex items-center gap-2">
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => setPageIndex(0)} disabled={!canPreviousPage}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => setPageIndex(0)}
+                        disabled={!canPreviousPage}
+                    >
                         <DoubleArrowLeftIcon className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => setPageIndex(pageIndex - 1)} disabled={!canPreviousPage}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => setPageIndex(pageIndex - 1)}
+                        disabled={!canPreviousPage}
+                    >
                         <ChevronLeftIcon className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => setPageIndex(pageIndex + 1)} disabled={!canNextPage}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => setPageIndex(pageIndex + 1)}
+                        disabled={!canNextPage}
+                    >
                         <ChevronRightIcon className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="h-8 w-8 p-0" onClick={() => setPageIndex(totalPages - 1)} disabled={!canNextPage}>
+                    <Button
+                        variant="outline"
+                        className="h-8 w-8 p-0"
+                        onClick={() => setPageIndex(totalPages - 1)}
+                        disabled={!canNextPage}
+                    >
                         <DoubleArrowRightIcon className="h-4 w-4" />
                     </Button>
                 </div>

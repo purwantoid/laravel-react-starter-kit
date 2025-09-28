@@ -1,5 +1,14 @@
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 
@@ -9,7 +18,11 @@ interface Props {
     contentClassName?: string;
 }
 
-export default function LongText({ children, className = '', contentClassName = '' }: Props) {
+export default function LongText({
+    children,
+    className = '',
+    contentClassName = '',
+}: Props) {
     const ref = useRef<HTMLDivElement>(null);
     const [isOverflown, setIsOverflown] = useState(false);
 
@@ -35,7 +48,10 @@ export default function LongText({ children, className = '', contentClassName = 
                 <TooltipProvider delayDuration={0}>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div ref={ref} className={cn('truncate', className)}>
+                            <div
+                                ref={ref}
+                                className={cn('truncate', className)}
+                            >
                                 {children}
                             </div>
                         </TooltipTrigger>
@@ -63,7 +79,10 @@ export default function LongText({ children, className = '', contentClassName = 
 
 const checkOverflow = (textContainer: HTMLDivElement | null) => {
     if (textContainer) {
-        return textContainer.offsetHeight < textContainer.scrollHeight || textContainer.offsetWidth < textContainer.scrollWidth;
+        return (
+            textContainer.offsetHeight < textContainer.scrollHeight ||
+            textContainer.offsetWidth < textContainer.scrollWidth
+        );
     }
     return false;
 };

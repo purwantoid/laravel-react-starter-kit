@@ -10,20 +10,23 @@ import { Toaster as SonnerToaster } from 'sonner';
 
 export function Providers({ children }: any) {
     return (
-            <NuqsAdapter>
-                <QueryClientProvider client={queryClient}>
-                    <SearchProvider>
-                        <ThemeProvider defaultTheme="light" storageKey="app-ui-theme">
-                            <TooltipProvider>{children}</TooltipProvider>
+        <NuqsAdapter>
+            <QueryClientProvider client={queryClient}>
+                <SearchProvider>
+                    <ThemeProvider
+                        defaultTheme="light"
+                        storageKey="app-ui-theme"
+                    >
+                        <TooltipProvider>{children}</TooltipProvider>
 
-                            <Toaster />
-                            <SonnerToaster position="bottom-right" />
-                        </ThemeProvider>
-                    </SearchProvider>
+                        <Toaster />
+                        <SonnerToaster position="bottom-right" />
+                    </ThemeProvider>
+                </SearchProvider>
 
-                    {/* Devtools */}
-                    <ReactQueryDevtools buttonPosition={'bottom-right'} />
-                </QueryClientProvider>
-            </NuqsAdapter>
+                {/* Devtools */}
+                <ReactQueryDevtools buttonPosition={'bottom-right'} />
+            </QueryClientProvider>
+        </NuqsAdapter>
     );
 }

@@ -19,14 +19,23 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
     if (!mounted) {
         return (
-            <Button size={'icon'} variant={'ghost'} className={cn('rounded-xl', className)}>
+            <Button
+                size={'icon'}
+                variant={'ghost'}
+                className={cn('rounded-xl', className)}
+            >
                 <Moon />
             </Button>
         );
     }
 
     return (
-        <Button onClick={toggleTheme} size={'icon'} variant={'ghost'} className={cn('rounded-xl', className)}>
+        <Button
+            onClick={toggleTheme}
+            size={'icon'}
+            variant={'ghost'}
+            className={cn('rounded-xl', className)}
+        >
             {theme === 'light' ? <Sun /> : <Moon />}
         </Button>
     );

@@ -12,11 +12,14 @@ function useNuqsInertiaAdapter() {
         const url = new URL(window.location.href);
         url.search = renderQueryString(search);
 
-        router.visit(`${window.location.pathname}${renderQueryString(search)}`, {
-            replace: options.history === 'replace',
-            preserveScroll: !options.scroll,
-            preserveState: true,
-        });
+        router.visit(
+            `${window.location.pathname}${renderQueryString(search)}`,
+            {
+                replace: options.history === 'replace',
+                preserveScroll: !options.scroll,
+                preserveState: true,
+            },
+        );
     };
 
     return {

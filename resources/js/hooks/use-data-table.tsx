@@ -1,7 +1,12 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
@@ -27,17 +32,26 @@ export function createSelectColumn<TData>(): ColumnDef<TData> {
         id: 'select',
         header: ({ table }) => (
             <Checkbox
-                checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-    aria-label="Select all"
-        />
-),
-    cell: ({ row }) => (
-        <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label="Select row" />
-),
-    enableSorting: false,
+                checked={
+                    table.getIsAllPageRowsSelected() ||
+                    (table.getIsSomePageRowsSelected() && 'indeterminate')
+                }
+                onCheckedChange={(value) =>
+                    table.toggleAllPageRowsSelected(!!value)
+                }
+                aria-label="Select all"
+            />
+        ),
+        cell: ({ row }) => (
+            <Checkbox
+                checked={row.getIsSelected()}
+                onCheckedChange={(value) => row.toggleSelected(!!value)}
+                aria-label="Select row"
+            />
+        ),
+        enableSorting: false,
         enableHiding: false,
-};
+    };
 }
 
 // Helper function to create an actions column
@@ -46,7 +60,7 @@ export function createActionsColumn<TData>(
         label: string;
         onClick: (data: TData) => void;
         variant?: 'default' | 'destructive';
-    }>
+    }>,
 ): ColumnDef<TData> {
     return {
         id: 'actions',
@@ -56,44 +70,54 @@ export function createActionsColumn<TData>(
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
-            <MoreHorizontal className="h-4 w-4" />
-                </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                {actions.map((action, index) => (
-                        <DropdownMenuItem
-                            key={index}
-                    onClick={() => action.onClick(data)}
-            className={action.variant === 'destructive' ? 'text-destructive' : ''}
-                >
-                {action.label}
-                </DropdownMenuItem>
-        ))}
-            </DropdownMenuContent>
-            </DropdownMenu>
-        );
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                            <span className="sr-only">Open menu</span>
+                            <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        {actions.map((action, index) => (
+                            <DropdownMenuItem
+                                key={index}
+                                onClick={() => action.onClick(data)}
+                                className={
+                                    action.variant === 'destructive'
+                                        ? 'text-destructive'
+                                        : ''
+                                }
+                            >
+                                {action.label}
+                            </DropdownMenuItem>
+                        ))}
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            );
         },
         enableHiding: false,
     };
 }
 
 // Helper function to create a sortable column
-export function createSortableColumn<TData>(accessorKey: keyof TData, header: string, cell?: (value: any) => React.ReactNode): ColumnDef<TData> {
+export function createSortableColumn<TData>(
+    accessorKey: keyof TData,
+    header: string,
+    cell?: (value: any) => React.ReactNode,
+): ColumnDef<TData> {
     return {
         accessorKey: accessorKey as string,
         header: ({ column }) => {
             return (
                 <Button
                     variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-            className="h-auto p-0 hover:bg-transparent"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                    className="h-auto p-0 hover:bg-transparent"
                 >
-                {header}
-                <ArrowUpDown className="ml-2 h-4 w-4" />
+                    {header}
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
-        );
+            );
         },
         cell: cell ? ({ getValue }) => cell(getValue()) : undefined,
     };
@@ -103,7 +127,9 @@ export function createSortableColumn<TData>(accessorKey: keyof TData, header: st
 export function createBadgeColumn<TData>(
     accessorKey: keyof TData,
     header: string,
-    badgeVariant?: (value: any) => 'default' | 'secondary' | 'destructive' | 'outline'
+    badgeVariant?: (
+        value: any,
+    ) => 'default' | 'secondary' | 'destructive' | 'outline',
 ): ColumnDef<TData> {
     return {
         accessorKey: accessorKey as string,
@@ -120,7 +146,7 @@ export function createBadgeColumn<TData>(
 export function createDateColumn<TData>(
     accessorKey: keyof TData,
     header: string,
-    format: (date: Date) => string = (date) => date.toLocaleDateString()
+    format: (date: Date) => string = (date) => date.toLocaleDateString(),
 ): ColumnDef<TData> {
     return {
         accessorKey: accessorKey as string,
@@ -134,7 +160,11 @@ export function createDateColumn<TData>(
 }
 
 // Helper function to create a currency column
-export function createCurrencyColumn<TData>(accessorKey: keyof TData, header: string, currency: string = 'USD'): ColumnDef<TData> {
+export function createCurrencyColumn<TData>(
+    accessorKey: keyof TData,
+    header: string,
+    currency: string = 'USD',
+): ColumnDef<TData> {
     return {
         accessorKey: accessorKey as string,
         header,
@@ -143,10 +173,10 @@ export function createCurrencyColumn<TData>(accessorKey: keyof TData, header: st
             return (
                 <div className="font-medium">
                     {new Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency,
-                        }).format(value)}
-                    </div>
+                        style: 'currency',
+                        currency,
+                    }).format(value)}
+                </div>
             );
         },
     };
@@ -162,7 +192,7 @@ export function useDataTable() {
             action(selectedRows);
             setSelectedRows([]);
         },
-        [selectedRows]
+        [selectedRows],
     );
 
     return {
