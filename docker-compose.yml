@@ -29,7 +29,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - submission_id_network
+      - laravel_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -57,7 +57,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - submission_id_network
+      - laravel_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -76,7 +76,7 @@ services:
     volumes:
       - './infrastructure/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
     networks:
-      - submission_id_network
+      - laravel_network
 
   meilisearch:
     image: 'getmeili/meilisearch:latest'
@@ -86,7 +86,7 @@ services:
     environment:
       MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
     networks:
-      - submission_id_network
+      - laravel_network
 
   mailpit:
     image: 'axllent/mailpit:latest'
@@ -95,7 +95,7 @@ services:
       - '${FORWARD_MAILPIT_PORT:-1025}:1025'
       - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
     networks:
-      - submission_id_network
+      - laravel_network
 
   web:
     build: infrastructure/nginx/
@@ -115,7 +115,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - submission_id_network
+      - laravel_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -124,10 +124,10 @@ services:
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     networks:
-      - submission_id_network
+      - laravel_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
 networks:
-  submission_id_network:
+  laravel_network:
     driver: bridge
