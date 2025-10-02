@@ -9,10 +9,8 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'verified']], static function () {
+    require __DIR__ . '/dashboard.php';
 });
 
 require __DIR__ . '/settings.php';
